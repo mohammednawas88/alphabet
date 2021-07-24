@@ -50,24 +50,19 @@ public static void main(String[] args) {
         for (int i = 0; i <= 51; i++) {
             data.get(i).removeLast();
         }
-        // deleting unused linked lists
-        for (int i = 0; i <= 51; i++) {
-            if (data.get(i).isEmpty()) {
-                data.removeAll(data.get(i));
-            }
-        }
-        
+
+        // revers the linkedlists
         // printing elements
         for (int i = 0; i <= 51; i++) {
-            for (int j = 0; j <= data.get(i).size() - 1; j++) {
+            for (int j = data.get(i).size() - 1; j >= 0; j--) {
                 System.out.print(data.get(i).get(j) + " ");
             }
-            if(data.get(i).isEmpty()==false)
+            if (data.get(i).isEmpty() == false) {
                 System.out.println("");
+            }
         }
     }
 
-    
     //split the String to words
     public static String[] split(String words) {
         String splittedWords[] = words.split(" ");
