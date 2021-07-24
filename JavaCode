@@ -1,0 +1,75 @@
+public static void main(String[] args) {
+
+        // get a string from the user
+        Scanner sc = new Scanner(System.in);
+        String words = sc.nextLine();
+        String splittedWords[] = split(words);
+
+        // creat arraylist of 52 linked list
+        ArrayList<LinkedList<String>> data = new ArrayList<>();
+        for (int i = 0; i <= 51; i++) {
+            data.add(new LinkedList<String>());
+        }
+
+        // adding the upper letters to the tail of even linked lists inside the array to use it as a refrance
+        data.get(0).addLast("a");
+        int jU = 2;
+        for (char i = 'b'; i <= 'z'; i++) {
+            String letter = String.valueOf(i); // char to string
+            data.get(jU).addLast(letter);
+            jU += 2;
+        }
+
+        // adding the lower letters to the tail of even linked lists inside the array to use it as a refrance
+        data.get(1).addLast("A");
+        int jL = 3;
+        for (char i = 'B'; i <= 'Z'; i++) {
+            String letter = String.valueOf(i); // char to string
+            data.get(jL).addLast(letter);
+            jL += 2;
+        }
+
+        // sorting the elements depends on the letter
+        for (int i = 0; i <= splittedWords.length - 1; i++) {
+            String wordOfIndex = splittedWords[i];
+            char firstL = wordOfIndex.charAt(0);
+            String letter = String.valueOf(firstL);
+
+            if (wordOfIndex.toLowerCase().equals("stop")) // if the word is "stop" get out of the loop
+            {
+                break;
+            } else {
+                for (int j = 0; j <= 51; j++) {
+                    if (letter.equals(data.get(j).getLast())) {
+                        data.get(j).addFirst(wordOfIndex);
+                    }
+                }
+            }
+        }
+        // removing the last index
+        for (int i = 0; i <= 51; i++) {
+            data.get(i).removeLast();
+        }
+        // deleting unused linked lists
+        for (int i = 0; i <= 51; i++) {
+            if (data.get(i).isEmpty()) {
+                data.removeAll(data.get(i));
+            }
+        }
+        
+        // printing elements
+        for (int i = 0; i <= 51; i++) {
+            for (int j = 0; j <= data.get(i).size() - 1; j++) {
+                System.out.print(data.get(i).get(j) + " ");
+            }
+            if(data.get(i).isEmpty()==false)
+                System.out.println("");
+        }
+    }
+
+    
+    //split the String to words
+    public static String[] split(String words) {
+        String splittedWords[] = words.split(" ");
+        return splittedWords;
+    }
