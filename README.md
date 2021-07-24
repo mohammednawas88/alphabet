@@ -1,4 +1,4 @@
-# alphabet
+# ArrayList of Linkedlist problem
 
 Write a java program that repeatedly prompts the user to input a string starting with letters from the English alphabet. The program must stop getting input when the user inputs the string “STOP” Consider The word STOP as case insensitive (i.e. STOP = stop = Stop = Stop ….) . Then the program must display the words starting with each letter (Case-Sensitive) from the alphabet in a separate line (e.g. you need to make a new line after all words starting with a specific letter are finished. 
 
